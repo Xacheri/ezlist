@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="eztan">#F9F7E9</color>
+    <color name="ezamber">#D56A34</color>
+    <color name="ezbrown">#3F170E</color>
+    <!-- Customize your light theme here. -->
+    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 </resources>

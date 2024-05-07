@@ -1,0 +1,15 @@
+package com.example.ez_list.model;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
+public class Store {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private long mId;
+
+    @ColumnInfo(name = "name")
+    private String mName;
+}
