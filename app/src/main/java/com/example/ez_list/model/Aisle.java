@@ -9,14 +9,14 @@ import androidx.room.PrimaryKey;
 public class Aisle {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private long mId;
+    public long mId;
 
     @ColumnInfo(name = "name")
-    private String mName;
+    public String mName;
 
     @ColumnInfo(name = "index")
-    private int mIndex;
+    public int mIndex;
 
     @ColumnInfo(name = "store_id")
-    private long mStoreId;
+    public long mStoreId;
 }

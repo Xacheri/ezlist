@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey;
 public class Store {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private long mId;
+     long mId;
 
     @ColumnInfo(name = "name")
-    private String mName;
+    String mName;
 }

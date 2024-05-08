@@ -9,20 +9,16 @@ import androidx.room.PrimaryKey;
 public class Grocery {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private long mId;
+    public long mId;
 
     @NonNull
     @ColumnInfo(name = "name")
-    private String mName;
+    public String mName;
 
     @ColumnInfo(name = "aisle_name")
-    private String mAisleName;
+    public String mAisleName;
+
 
     @ColumnInfo(name = "aisle_id")
-    private String mAisleId;
-    public Grocery(@NonNull String groceryName, String aisleName)
-    {
-        mName = groceryName;
-        mAisleName = aisleName;
-    }
+    public String mAisleId;
 }

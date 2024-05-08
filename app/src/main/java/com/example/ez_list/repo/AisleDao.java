@@ -18,7 +18,7 @@ public interface AisleDao {
     LiveData<List<Aisle>> getAislesFromStore(long store_id);
 
     @Update
-    long updateAisles(List<Aisle> aisles);
+    int updateAisles(List<Aisle> aisles);
 
     @Delete
     void deleteAisle(Aisle aisle);

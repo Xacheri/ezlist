@@ -6,15 +6,32 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-public class MainActivity extends AppCompatActivity {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ez_list.model.Grocery;
+import com.example.ez_list.model.GroceryList;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+public class MainActivity extends AppCompatActivity implements GroceryListItem.ItemAdapter.OnButtonClickListener {
+
+    private RecyclerView recyclerView;
+    private GroceryListItem.ItemAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +54,24 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
+        recyclerView = findViewById(R.id.grocery_lists_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<GroceryList> groceryList = new ArrayList<GroceryList>();
+        GroceryList exampleList = new GroceryList();
+        exampleList.name = "Example";
+        groceryList.add(exampleList);
+        groceryList.add(exampleList);
+        groceryList.add(exampleList);
+        listAdapter = new GroceryListItem.ItemAdapter(groceryList);
+        recyclerView.setAdapter(listAdapter);
     }
     @Override
-    public boolean onCreateOptionsMenu( Menu menu ) {
-
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
@@ -58,5 +86,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDeleteListClick(int pos) {
+
+    }
+
+    @Override
+    public void onOpenListClick(int pos) {
+
     }
 }
