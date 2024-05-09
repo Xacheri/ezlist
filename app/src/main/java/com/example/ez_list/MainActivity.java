@@ -1,38 +1,33 @@
 package com.example.ez_list;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ez_list.model.Grocery;
-import com.example.ez_list.model.GroceryList;
+import com.example.ez_list.data.GroceryList;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity implements GroceryListItem.ItemAdapter.OnButtonClickListener {
 
     private RecyclerView recyclerView;
     private GroceryListItem.ItemAdapter listAdapter;
 
+    private GroceryListCollectionViewModel groceryListCollectionViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +52,22 @@ public class MainActivity extends AppCompatActivity implements GroceryListItem.I
         recyclerView = findViewById(R.id.grocery_lists_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        groceryListCollectionViewModel = new ViewModelProvider(this).get(GroceryListCollectionViewModel.class);
+
+        groceryListCollectionViewModel.getLists().observe(this, lists -> {
+            updateUI(lists);
+        });
         List<GroceryList> groceryList = new ArrayList<GroceryList>();
         GroceryList exampleList = new GroceryList();
         exampleList.name = "Example";
-        groceryList.add(exampleList);
-        groceryList.add(exampleList);
-        groceryList.add(exampleList);
         listAdapter = new GroceryListItem.ItemAdapter(groceryList);
         recyclerView.setAdapter(listAdapter);
     }
+
+    private void updateUI(List<GroceryList> lists) {
+       listAdapter.updateList(lists);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -95,6 +97,12 @@ public class MainActivity extends AppCompatActivity implements GroceryListItem.I
 
     @Override
     public void onOpenListClick(int pos) {
+        List<GroceryList> list = groceryListCollectionViewModel.getLists().getValue();
+        GroceryList selected =  listAdapter.getListItemByPosition(pos);
 
+        // TEST, add it in
+        list.add(selected);
+
+        listAdapter.updateList(list);
     }
 }

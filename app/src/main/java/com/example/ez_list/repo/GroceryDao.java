@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.ez_list.model.Grocery;
+import com.example.ez_list.data.Grocery;
 
 import java.util.List;
 

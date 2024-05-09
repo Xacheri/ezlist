@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ez_list.model.GroceryList;
+import com.example.ez_list.data.GroceryList;
 
 import java.util.List;
 
@@ -63,6 +63,17 @@ public class GroceryListItem extends Fragment {
         public int getItemCount() {
             return itemList.size();
         }
+
+        public void updateList(List<GroceryList> groceryLists) {
+            itemList = groceryLists;
+            notifyDataSetChanged();
+        }
+
+        public GroceryList getListItemByPosition(int pos)
+        {
+            return itemList.get(pos);
+        }
+
         class ItemViewHolder extends RecyclerView.ViewHolder {
             private TextView itemName;
 

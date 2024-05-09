@@ -1,4 +1,4 @@
-package com.example.ez_list.model;
+package com.example.ez_list.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

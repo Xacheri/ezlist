@@ -5,10 +5,10 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
-import com.example.ez_list.model.Aisle;
-import com.example.ez_list.model.Grocery;
+import com.example.ez_list.data.Aisle;
+import com.example.ez_list.data.Grocery;
+import com.example.ez_list.data.GroceryList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GroceryRepository {
@@ -18,7 +18,9 @@ public class GroceryRepository {
 
     private final AisleDao mAisleDao;
 
-    private static GroceryRepository getInstance(Context context)
+    private final GroceryListDao mListsDao;
+
+    public static GroceryRepository getInstance(Context context)
     {
         if (mGroceryRepository == null) {
             mGroceryRepository = new GroceryRepository(context);
@@ -33,6 +35,7 @@ public class GroceryRepository {
 
         mGroceryDao = db.groceryDao();
         mAisleDao = db.aisleDao();
+        mListsDao = db.listsDao();
     }
     public LiveData<List<Grocery>> getGroceriesInOrder(List<String> names, String store_name) {
         return mGroceryDao.getGroceriesInOrder(names, store_name);
@@ -71,4 +74,9 @@ public class GroceryRepository {
         return mAisleDao.getAislesFromStore(store_id);
    }
 
+   public LiveData<List<GroceryList>> getAllLists() {
+        return mListsDao.getAllLists();
+   }
+
+   public void insertList(GroceryList list) {mListsDao.insertList(list);}
 }

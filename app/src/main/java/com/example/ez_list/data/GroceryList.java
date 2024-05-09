@@ -1,15 +1,15 @@
-package com.example.ez_list.model;
+package com.example.ez_list.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Store {
+public class GroceryList {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-     long mId;
+    public long id;
 
     @ColumnInfo(name = "name")
-    String mName;
+    public String name;
 }
