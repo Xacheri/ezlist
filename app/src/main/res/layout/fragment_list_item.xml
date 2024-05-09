@@ -25,8 +25,9 @@
         android:src="@drawable/plain_cart_icon" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/delete_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/delete_button"
         android:paddingRight="8dp"

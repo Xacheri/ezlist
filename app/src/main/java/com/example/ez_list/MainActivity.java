@@ -22,7 +22,7 @@ import com.example.ez_list.data.GroceryList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements GroceryListItem.ItemAdapter.OnButtonClickListener {
+public class MainActivity extends AppCompatActivity  {
 
     private RecyclerView recyclerView;
     private GroceryListItem.ItemAdapter listAdapter;
@@ -60,7 +60,10 @@ public class MainActivity extends AppCompatActivity implements GroceryListItem.I
         List<GroceryList> groceryList = new ArrayList<GroceryList>();
         GroceryList exampleList = new GroceryList();
         exampleList.name = "Example";
-        listAdapter = new GroceryListItem.ItemAdapter(groceryList);
+        groceryList.add(exampleList);
+        ArrayList<GroceryList> list = (ArrayList<GroceryList>) groceryList;
+        groceryListCollectionViewModel.addList(exampleList);
+        listAdapter = new GroceryListItem.ItemAdapter(list, this);
         recyclerView.setAdapter(listAdapter);
     }
 
@@ -90,19 +93,4 @@ public class MainActivity extends AppCompatActivity implements GroceryListItem.I
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onDeleteListClick(int pos) {
-
-    }
-
-    @Override
-    public void onOpenListClick(int pos) {
-        List<GroceryList> list = groceryListCollectionViewModel.getLists().getValue();
-        GroceryList selected =  listAdapter.getListItemByPosition(pos);
-
-        // TEST, add it in
-        list.add(selected);
-
-        listAdapter.updateList(list);
-    }
 }

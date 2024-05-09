@@ -23,7 +23,7 @@ public class GroceryListCollectionViewModel extends AndroidViewModel {
         lists = repo.getAllLists();
     }
 
-    public LiveData<List<GroceryList>> getLists(){
+    public LiveData<List<GroceryList>> getLists() {
         return lists;
     }
 
