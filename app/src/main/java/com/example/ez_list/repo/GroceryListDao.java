@@ -17,6 +17,10 @@ public interface GroceryListDao {
    @Query("SELECT * FROM GroceryList")
    LiveData<List<GroceryList>> getAllLists();
 
+   @Query("SELECT * FROM GroceryList WHERE LOWER(name) = LOWER(:name) LIMIT 1")
+   GroceryList getListByName(String name);
+
+
    @Insert
    void insertList(GroceryList groceryList);
 

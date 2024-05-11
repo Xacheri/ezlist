@@ -7,4 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".ViewListActivity">
 
+    <TextView
+        android:id="@+id/ListTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/slabo_13px"
+        android:text="@string/list_title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="?android:actionBarSize"/>
+
+    <LinearLayout
+        android:id="@+id/string_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListTitleView"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

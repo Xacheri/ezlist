@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = Store.class, parentColumns = "id", childColumns = "store_id", onDelete = ForeignKey.CASCADE))
+@Entity
 public class Aisle {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -17,6 +17,5 @@ public class Aisle {
     @ColumnInfo(name = "index")
     public int mIndex;
 
-    @ColumnInfo(name = "store_id")
-    public long mStoreId;
+
 }

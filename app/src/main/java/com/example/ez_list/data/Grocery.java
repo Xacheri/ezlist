@@ -20,5 +20,5 @@ public class Grocery {
 
 
     @ColumnInfo(name = "aisle_id")
-    public String mAisleId;
+    public long mAisleId;
 }

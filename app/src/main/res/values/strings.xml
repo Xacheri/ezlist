@@ -48,4 +48,18 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="groceryname">ExampleGrocery</string>
+    <string name="new_list">New List</string>
+    <string name="examplefoodname">ExampleFoodName</string>
+    <string name="add_item">Add Item</string>
+    <string name="cancel">Cancel</string>
+    <string name="name_of_food">Name of Food</string>
+    <string name="name_of_aisle">Name of Aisle</string>
+    <string name="list_title_edit">Enter a List Title</string>
+    <string name="all_groceries">All Groceries</string>
+    <string name="list_title">List Title</string>
+    <string name="list_name">List Name</string>
+    <string name="confirm">Confirm</string>
 </resources>

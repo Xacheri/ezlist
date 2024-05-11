@@ -14,8 +14,14 @@ import java.util.List;
 
 @Dao
 public interface AisleDao {
-    @Query("SELECT * FROM Aisle WHERE store_id = :store_id")
-    LiveData<List<Aisle>> getAislesFromStore(long store_id);
+    @Query("SELECT * FROM Aisle")
+    LiveData<List<Aisle>> getAisles();
+
+    @Query("SELECT MAX(Aisle.`index`) FROM Aisle")
+    int getMaxIndexForAisle();
+
+    @Query("SELECT Aisle.id FROM Aisle WHERE name = :name")
+    int getAisleIdByName(String name);
 
     @Update
     int updateAisles(List<Aisle> aisles);

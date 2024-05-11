@@ -1,5 +1,6 @@
 package com.example.ez_list;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -22,11 +23,10 @@ import com.example.ez_list.data.GroceryList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements GroceryListItem.OnDeleteClickListener {
 
     private RecyclerView recyclerView;
     private GroceryListItem.ItemAdapter listAdapter;
-
     private GroceryListCollectionViewModel groceryListCollectionViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,34 +41,38 @@ public class MainActivity extends AppCompatActivity  {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-
-
             actionBar.setIcon(R.drawable.cart_icon);
-            // methods to display the icon in the ActionBar
             actionBar.setDisplayUseLogoEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        recyclerView = findViewById(R.id.grocery_lists_recycler);
+        RecyclerView recyclerView = findViewById(R.id.grocery_lists_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         groceryListCollectionViewModel = new ViewModelProvider(this).get(GroceryListCollectionViewModel.class);
 
         groceryListCollectionViewModel.getLists().observe(this, lists -> {
+            if (lists.isEmpty()) {
+                GroceryList exampleList = new GroceryList();
+                exampleList.name = "Example";
+                groceryListCollectionViewModel.addList(exampleList);  // This line adds the starter list to your ViewModel/Data Layer
+            }
             updateUI(lists);
         });
-        List<GroceryList> groceryList = new ArrayList<GroceryList>();
-        GroceryList exampleList = new GroceryList();
-        exampleList.name = "Example";
-        groceryList.add(exampleList);
-        ArrayList<GroceryList> list = (ArrayList<GroceryList>) groceryList;
-        groceryListCollectionViewModel.addList(exampleList);
-        listAdapter = new GroceryListItem.ItemAdapter(list, this);
+
+        listAdapter = new GroceryListItem.ItemAdapter(new ArrayList<>(), this, this);
         recyclerView.setAdapter(listAdapter);
     }
 
     private void updateUI(List<GroceryList> lists) {
        listAdapter.updateList(lists);
+    }
+
+
+
+    @Override
+    public void onDeleteClick(GroceryList list){
+        groceryListCollectionViewModel.deleteList(list);
     }
 
     @Override
@@ -82,12 +86,15 @@ public class MainActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.your_lists) {
-            Toast.makeText(this, "Your Lists Clicked", Toast.LENGTH_SHORT).show();
-        } else if (itemId == R.id.your_aisles) {
+        if (itemId == R.id.new_list) {
+            Intent i = new Intent(this, NewListActivity.class);
+            startActivity(i);
+        }
+        else if (itemId == R.id.your_aisles) {
             Toast.makeText(this, "Your Aisles Clicked", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.groceries) {
-            Toast.makeText(this, "Groceries Clicked", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, GroceriesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

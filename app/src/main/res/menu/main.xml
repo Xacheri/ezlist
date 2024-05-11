@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="@string/your_lists"
-        android:id="@+id/your_lists"
-        android:icon="@drawable/document_icon"
+        android:id="@+id/new_list"
+        android:title="@string/new_list"
+        android:icon="@drawable/new_list_icon"
         app:showAsAction="ifRoom|withText"
         >
     </item>

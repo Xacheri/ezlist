@@ -8,10 +8,12 @@ import androidx.room.ForeignKey;
         foreignKeys = {
                 @ForeignKey(entity = GroceryList.class,
                         parentColumns = "id",
-                        childColumns = "listId"),
+                        childColumns = "listId",
+                        onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity = Grocery.class,
-                        parentColumns = "mId",
-                        childColumns = "groceryId")
+                        parentColumns = "id",
+                        childColumns = "groceryId",
+                        onDelete = ForeignKey.CASCADE)
         })
 public class ListItemJunction {
     @ColumnInfo(name = "listId")
