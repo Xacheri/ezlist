@@ -62,4 +62,8 @@
     <string name="list_title">List Title</string>
     <string name="list_name">List Name</string>
     <string name="confirm">Confirm</string>
+    <string name="aisle_order">Aisle Order:</string>
+    <string name="aislename">AisleName</string>
+    <string name="aisle_instructions">Press, Hold, And Drag aisles to change their order in list generation.</string>
+    <string name="delete_an_aisle">Delete an Aisle</string>
 </resources>

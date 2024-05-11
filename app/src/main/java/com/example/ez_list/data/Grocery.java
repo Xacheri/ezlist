@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = Aisle.class, parentColumns = "id", childColumns = "aisle_id"))
+@Entity(foreignKeys = @ForeignKey(entity = Aisle.class, parentColumns = "id", childColumns = "aisle_id", onDelete = ForeignKey.CASCADE))
 public class Grocery {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

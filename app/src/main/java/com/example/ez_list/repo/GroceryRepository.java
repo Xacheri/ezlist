@@ -82,7 +82,7 @@ public class GroceryRepository {
         mAisleDao.insertAisle(aisle);
     }
 
-   public LiveData<List<Aisle>> getAislesFromStore() {
+   public LiveData<List<Aisle>> getAisles() {
         return mAisleDao.getAisles();
    }
 
@@ -90,6 +90,9 @@ public class GroceryRepository {
         return mAisleDao.getMaxIndexForAisle();
    }
 
+   public List<Aisle> getAislesByName(String name) {
+        return mAisleDao.getAisleByName(name);
+   }
    public int getAisleIdByName(String name) {
         return mAisleDao.getAisleIdByName(name);
    }

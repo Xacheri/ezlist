@@ -14,7 +14,7 @@ import java.util.List;
 
 @Dao
 public interface AisleDao {
-    @Query("SELECT * FROM Aisle")
+    @Query("SELECT * FROM Aisle ORDER BY Aisle.`index`")
     LiveData<List<Aisle>> getAisles();
 
     @Query("SELECT MAX(Aisle.`index`) FROM Aisle")
@@ -23,6 +23,8 @@ public interface AisleDao {
     @Query("SELECT Aisle.id FROM Aisle WHERE name = :name")
     int getAisleIdByName(String name);
 
+    @Query("SELECT Aisle.* FROM Aisle WHERE name = :name")
+    List<Aisle> getAisleByName(String name);
     @Update
     int updateAisles(List<Aisle> aisles);
 

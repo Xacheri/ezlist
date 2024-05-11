@@ -27,7 +27,9 @@ public interface GroceryDao {
     @Query("SELECT Grocery.* FROM GroceryList " +
             "INNER JOIN ListItemJunction ON ListItemJunction.listId = GroceryList.id " +
             "INNER JOIN Grocery ON Grocery.id = ListItemJunction.groceryId " +
-            "WHERE GroceryList.name = :listName")
+            "INNER JOIN Aisle ON Grocery.aisle_id = Aisle.id " +
+            "WHERE GroceryList.name = :listName " +
+            "ORDER BY Aisle.`index`")
     LiveData<List<Grocery>> getGroceriesInList(String listName);
 
     @Query("SELECT * FROM Grocery")

@@ -91,7 +91,8 @@ public class MainActivity extends AppCompatActivity implements GroceryListItem.O
             startActivity(i);
         }
         else if (itemId == R.id.your_aisles) {
-            Toast.makeText(this, "Your Aisles Clicked", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, AislesActivity.class);
+            startActivity(i);
         } else if (itemId == R.id.groceries) {
             Intent i = new Intent(this, GroceriesActivity.class);
             startActivity(i);

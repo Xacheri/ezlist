@@ -13,10 +13,15 @@
         android:theme="@style/Theme.Ezlist"
         tools:targetApi="31">
         <activity
-            android:name=".GroceriesActivity"
+            android:name=".AislesActivity"
             android:exported="false"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".GroceriesActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NewListActivity"
             android:exported="false"

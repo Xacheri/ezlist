@@ -9,7 +9,7 @@ import com.example.ez_list.data.GroceryList;
 import com.example.ez_list.data.ListItemJunction;
 import com.example.ez_list.data.Store;
 
-@Database(entities = {Grocery.class, Aisle.class, GroceryList.class, ListItemJunction.class}, version = 7)
+@Database(entities = {Grocery.class, Aisle.class, GroceryList.class, ListItemJunction.class}, version = 10)
 public abstract class EZListDatabase extends RoomDatabase {
     public abstract AisleDao aisleDao();
     public abstract GroceryDao groceryDao();

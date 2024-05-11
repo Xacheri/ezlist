@@ -122,7 +122,7 @@ public class GroceryListViewModel extends AndroidViewModel {
     }
 
     public void addAisleToGrocery(String name) {
-        boolean aisleExists = aisleExists(name);
+        boolean aisleExists = aisleExistsForAisle(name);
         if(!aisleExists){
             Aisle a = new Aisle();
             a.mName = name;
@@ -140,6 +140,14 @@ public class GroceryListViewModel extends AndroidViewModel {
     public boolean aisleExists(String groceryName) {
         Grocery result = repo.getGroceryByName(groceryName);
         if(result == null || result.mAisleId < 1) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean aisleExistsForAisle(String aisleName) {
+        List<Aisle> result = repo.getAislesByName(aisleName);
+        if(result == null || result.isEmpty()) {
             return false;
         }
         return true;
